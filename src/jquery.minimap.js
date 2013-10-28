@@ -9,26 +9,22 @@
 
 (function($) {
   $.fn.minimap = function(settings) {
-
     var settings = $.extend({
       body_col: '',
       map_col: '',
       toggle_btn: '',
       draggable: (typeof $.fn.draggable !== 'undefined'),
-      map_header: '<header class="map-header">' +
-        '<span class="janrain-icon-compass"></span> ' +
-        'Page Map<span role="toggle-map" class="right janrain-icon-ex"></span></header>'
+      map_header: ''
     }, settings);
 
-    var body_col = (settings.body_col) ? $(settings.body_col) : $(this);
-
-    var map_col = (settings.map_col) ? $(settings.map_col) : $( '<aside class="map_col"></aside>' );
+    var body_col = (settings.body_col) ?
+          $(settings.body_col) : $(this),
+        map_col = (settings.map_col) ?
+          $(settings.map_col) : $( '<aside class="map_col"></aside>' );
 
     var map_header = $(settings.map_header).appendTo( map_col );
 
-    map_col
-      .insertBefore( body_col );
-
+    map_col.insertBefore( body_col );
 
     var miniMapSetup = false,
         scrolling = false,
@@ -42,13 +38,13 @@
 
       var miniMapHolder = map_col,
           miniMapHeight = Math.min(
-            miniMapHolder.parent().height(),
+            miniMapHolder.parent().outerHeight(),
             $(window).height()
           ),
           miniMapOffsetTop = (map_header) ? map_header.outerHeight() : 0,
           miniMapWidth = miniMapHolder.width(),
           bodyCol = body_col,
-          bodyHeight = bodyCol.height(),
+          bodyHeight = bodyCol.outerHeight(),
           bodyWidth = $('.body_col').width() - miniMapWidth,
           scaling = Math.min(
             ( miniMapWidth - 12 ) / bodyWidth,
