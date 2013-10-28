@@ -10,25 +10,24 @@
 (function($) {
   $.fn.minimap = function(settings) {
     var settings = $.extend({
-      body_col: '',
-      map_col: '',
-      toggle_btn: '',
-      draggable: (typeof $.fn.draggable !== 'undefined'),
-      map_header: ''
+      body_col:    '',
+      map_col:     '',
+      toggle_btn:  '',
+      draggable:   (typeof $.fn.draggable !== 'undefined'),
+      scrollto:    (typeof $.fn.scrollTo !== 'undefined'),
+      map_header:  ''
     }, settings);
 
-    var body_col = (settings.body_col) ?
-          $(settings.body_col) : $(this),
-        map_col = (settings.map_col) ?
-          $(settings.map_col) : $( '<aside class="map_col"></aside>' );
+    var body_col = (settings.body_col) ?  $(settings.body_col) : $(this),
+        map_col  = (settings.map_col) ?  $(settings.map_col) : $( '<aside class = "map_col"></aside>' );
 
     var map_header = $(settings.map_header).appendTo( map_col );
 
     map_col.insertBefore( body_col );
 
     var miniMapSetup = false,
-        scrolling = false,
-        resizing = false;
+        scrolling    = false,
+        resizing     = false;
 
     // Performs the inital minimap setup: clones the element defined as the body_column,
     // removes any scripts, links, etc., and inserts the map column before the body columN
@@ -36,20 +35,14 @@
 
       if ( miniMapSetup ) return;
 
-      var miniMapHolder = map_col,
-          miniMapHeight = Math.min(
-            miniMapHolder.parent().outerHeight(),
-            $(window).height()
-          ),
+      var miniMapHolder    = map_col,
+          miniMapHeight    = Math.min( miniMapHolder.parent().outerHeight(), $(window).height()),
           miniMapOffsetTop = (map_header) ? map_header.outerHeight() : 0,
-          miniMapWidth = miniMapHolder.width(),
-          bodyCol = body_col,
-          bodyHeight = bodyCol.outerHeight(),
-          bodyWidth = $('.body_col').width() - miniMapWidth,
-          scaling = Math.min(
-            ( miniMapWidth - 12 ) / bodyWidth,
-            ( miniMapHeight - 24) / bodyHeight
-          ),
+          miniMapWidth     = miniMapHolder.width(),
+          bodyCol          = body_col,
+          bodyHeight       = bodyCol.outerHeight(),
+          bodyWidth        = $('.body_col').width() - miniMapWidth,
+          scaling          = Math.min( ( miniMapWidth - 12 ) / bodyWidth, ( miniMapHeight - 24) / bodyHeight),
           mapWaypoint;
 
       var miniMapWrapElt = $('<div></div>')
@@ -66,24 +59,20 @@
       var miniMap = bodyCol
         .clone(false)
         .css({
-          background: 'transparent',
-          color: 'black',
-          width: bodyWidth,
-          position: 'absolute',
-          top: '6px',
-          right: ( miniMapWidth - scaling * bodyWidth ) / 2,
-          opacity: '1',
-          'transform': 'scale('+scaling+')',
-          'transform-origin': 'top right',
-          '-webkit-transform': 'scale('+scaling+')',
-          '-webkit-transform-origin': 'top right'
+          background:                  'transparent',
+          color:                       'black',
+          width:                       bodyWidth,
+          position:                    'absolute',
+          top:                         '6px',
+          right:                       ( miniMapWidth - scaling * bodyWidth ) / 2,
+          opacity:                     '1',
+          'transform':                 'scale('+scaling+')',
+          'transform-origin':          'top right',
+          '-webkit-transform':         'scale('+scaling+')',
+          '-webkit-transform-origin':  'top right'
         });
 
       miniMap.find('script').remove();
-      miniMap.find('a.section-bookmark').remove();
-      miniMap.find('#footer').remove();
-      miniMap.find('#wpadminbar').remove();
-      miniMap.find('.section-bookmark').remove();
       miniMap.appendTo( miniMapWrapElt );
 
       miniMapOverlay = $('<div></div>')
@@ -99,9 +88,9 @@
 
       mapWaypoint = $('<div class="miniMapOverlay ui-draggable"></div>')
         .css({
-          background: 'rgba(26, 45, 58, .1)',
-          width: '100%',
-          position: 'absolute'
+          background:  'rgba(26, 45, 58, .1)',
+          width:       '100%',
+          position:    'absolute'
         })
         .appendTo( miniMapWrapElt );
 
@@ -113,27 +102,24 @@
         }
         resizing = true;
 
-        bodyHeight = bodyCol.height();
-        bodyWidth = bodyCol.width();
-        miniMapHeight = miniMapHolder.height();
-        miniMapWidth = miniMapHolder.width();
+        bodyHeight       = bodyCol.height();
+        bodyWidth        = bodyCol.width();
+        miniMapHeight    = miniMapHolder.height();
+        miniMapWidth     = miniMapHolder.width();
         miniMapOffsetTop = (map_header) ? map_header.height() : 0;
-        winHeight = $(window).height();
-        scaling = Math.min(
-          ( miniMapWidth - 12 ) / bodyWidth,
-          ( miniMapHeight - 24 ) / bodyHeight
-        );
+        winHeight        = $(window).height();
+        scaling          = Math.min( ( miniMapWidth - 12 ) / bodyWidth, ( miniMapHeight - 24 ) / bodyHeight);
 
         miniMapWrapElt.css({
           height: miniMapHeight
         });
         miniMap.css({
-          width: bodyWidth,
-          right: ( miniMapWidth - scaling * bodyWidth ) / 2,
-          'transform': 'scale('+scaling+')',
-          'transform-origin': 'top right',
-          '-webkit-transform': 'scale('+scaling+')',
-          '-webkit-transform-origin': 'top right'
+          width:                       bodyWidth,
+          right:                       ( miniMapWidth - scaling * bodyWidth ) / 2,
+          'transform':                 'scale('+scaling+')',
+          'transform-origin':          'top right',
+          '-webkit-transform':         'scale('+scaling+')',
+          '-webkit-transform-origin':  'top right'
         });
 
         $(window).trigger( 'scroll.minimap' );
@@ -149,12 +135,12 @@
         }
         scrolling = true;
 
-        var loc = $(window).scrollTop(),
-        winHeight = $(window).height();
+        var loc       = $(window).scrollTop(),
+            winHeight = $(window).height();
 
         mapWaypoint.css({
-          top: loc * scaling + 6,
-          height: winHeight * scaling
+          top:     loc * scaling + 6,
+          height:  winHeight * scaling
         });
 
         scrolling = false;
@@ -163,9 +149,9 @@
       miniMapSetup = true;
 
       $('.miniMapOverlay').draggable({
-        axis: 'y',
-        containment: 'parent',
-        drag: function( event, ui ) {
+        axis:         'y',
+        containment:  'parent',
+        drag:         function( event, ui ) {
           // It shouldn't be necessary to look up the actual CSS property of the object,
           // but because of the combination of the CSS transform and the draggable helper,
           // both offset.top and position.top are returning very weird results.
@@ -175,9 +161,9 @@
       });
 
       $('.mini-map-clickable').click(function(event){
-        var clickTop = event.clientY - $('.map_col').offset().top - 60,
+        var clickTop  = event.clientY - $('.map_col').offset().top - 60,
             winHeight = ( $(window).height() - miniMapOffsetTop ) * scaling;
-        clickCenter = Math.max( 0, (clickTop - winHeight / 2) );
+        clickCenter   = Math.max( 0, (clickTop - winHeight / 2) );
 
         $(window).scrollTop( clickCenter / scaling );
       });
@@ -186,7 +172,6 @@
 
     // Wait for all content to render before initially scaling the mini-map
     $(window).load(function() {
-      console.log( utilities );
       utilities.toggle( window.localStorage.getItem('miniMapActive') );
     });
 
@@ -219,4 +204,5 @@
 
     return utilities
   };
+
 }(jQuery));
