@@ -1,0 +1,40 @@
+@import url(http://fonts.googleapis.com/css?family=Alegreya|Diplomata);
+
+html {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Alegreya", serif;
+  height: 100%;
+}
+
+h1 {
+  font-family: "Diplomata", cursive;
+  color: #999;
+}
+
+h2, h3, h4 {
+  font-style: italic;
+  color: #444;
+}
+
+.body_column {
+  overflow: hidden;
+  width: 80%;
+  max-width: 40em;
+  margin: 0 auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-size: .9em;
+  font-style: italic;
+}
