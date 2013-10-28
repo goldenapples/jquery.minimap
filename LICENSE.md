@@ -1,9 +1,10 @@
 jQuery minimap
-https://github.com/goldenapples
+==============
 
-By Nathaniel Taintor for [Janrain](http://janrain.com)
-Copyright 2013 by Janrain
-Available for use under the MIT License
+- By [Nathaniel Taintor](https://github.com/goldenapples)
+  for [Janrain](http://janrain.com)
+- Copyright 2013 by Janrain, Inc.
+- Available for use under the MIT License
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
