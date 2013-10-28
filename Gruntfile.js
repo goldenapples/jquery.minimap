@@ -11,13 +11,18 @@ module.exports = function(grunt) {
         src: 'src/<%= pkg.name %>.js',
         dest: '<%= pkg.name %>.min.js'
       }
+    },
+    watch: {
+      scripts: {
+        files: ['src/*'],
+        tasks: ['uglify']
+      }
     }
   });
 
-  // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
-  // Default task(s).
   grunt.registerTask('default', ['uglify']);
 
 };
