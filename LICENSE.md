@@ -1,8 +1,8 @@
 jQuery minimap
 ==============
 
-- By [Nathaniel Taintor](https://github.com/goldenapples)
-  for [Janrain](http://janrain.com)
+- By [Nathaniel Taintor](https://github.com/goldenapples) and
+  [Brian Wald](https://github.com/briancwald) for [Janrain](http://janrain.com)
 - Copyright 2013 by Janrain, Inc.
 - Available for use under the MIT License
 
