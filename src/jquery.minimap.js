@@ -4,7 +4,7 @@
  * Requires: jQuery
  *
  * Released under the MIT license.
- * https://github.com/goldenapples/jQuery.minimap/blob/master/LICENSE.txt
+ * https://github.com/goldenapples/jquery.minimap/blob/master/LICENSE.txt
  */
 
 (function($) {
@@ -18,8 +18,10 @@
       map_header:  ''
     }, settings);
 
-    var body_col = (settings.body_col) ?  $(settings.body_col) : $(this),
-        map_col  = (settings.map_col) ?  $(settings.map_col) : $( '<aside class = "map_col"></aside>' );
+    var body_col = (settings.body_col) ?
+          $(settings.body_col) : $(this),
+        map_col  = (settings.map_col) ?
+          $(settings.map_col) : $( '<aside class="map_col"></aside>' );
 
     var map_header = $(settings.map_header).appendTo( map_col );
 
@@ -29,30 +31,37 @@
         scrolling    = false,
         resizing     = false;
 
-    // Performs the inital minimap setup: clones the element defined as the body_column,
-    // removes any scripts, links, etc., and inserts the map column before the body columN
+
+    // Performs the inital minimap setup: clones the element defined as the
+    // body_column; removes any scripts, links, etc.; and inserts the map column
+    // before the body column
+
     (function() {
 
       if ( miniMapSetup ) return;
 
+      console.log( map_col );
       var miniMapHolder    = map_col,
-          miniMapHeight    = Math.min( miniMapHolder.parent().outerHeight(), $(window).height()),
+          miniMapHeight    = miniMapHolder.outerHeight(),
           miniMapOffsetTop = (map_header) ? map_header.outerHeight() : 0,
-          miniMapWidth     = miniMapHolder.width(),
+          miniMapWidth     = miniMapHolder.outerWidth(),
           bodyCol          = body_col,
           bodyHeight       = bodyCol.outerHeight(),
           bodyWidth        = $('.body_col').width() - miniMapWidth,
-          scaling          = Math.min( ( miniMapWidth - 12 ) / bodyWidth, ( miniMapHeight - 24) / bodyHeight),
+          scaling          = Math.min(
+                               ( miniMapWidth - 12 ) / bodyWidth,
+                               ( miniMapHeight - 24) / bodyHeight
+                             ),
           mapWaypoint;
 
       var miniMapWrapElt = $('<div></div>')
         .addClass('map-col-background')
         .css({
-          position: 'fixed',
-          width: miniMapWidth -1,
-          height: miniMapHeight,
-          top: miniMapOffsetTop,
-          overflow: 'hidden'
+          position:  'fixed',
+          width:     miniMapWidth -1,
+          height:    miniMapHeight,
+          top:       miniMapOffsetTop,
+          overflow:  'hidden'
         })
         .appendTo(miniMapHolder);
 
@@ -94,8 +103,12 @@
         })
         .appendTo( miniMapWrapElt );
 
-      // Redraw the entire minimap when a window.resize event is detected
-      // (resizing may have caused reflow).
+
+      // Redraw the entire minimap when a window.resize event is detected,
+      // in case the resizing may have caused reflow. Also trigger a "scroll"
+      // event from here, because the visible viewport will definitely have to
+      // be updated.
+
       $(window).on( 'resize.minimap', function() {
         if ( resizing ) {
           return;
@@ -104,15 +117,20 @@
 
         bodyHeight       = bodyCol.height();
         bodyWidth        = bodyCol.width();
-        miniMapHeight    = miniMapHolder.height();
-        miniMapWidth     = miniMapHolder.width();
+        miniMapHeight    = miniMapHolder.outerHeight();
+        miniMapWidth     = miniMapHolder.outerWidth();
         miniMapOffsetTop = (map_header) ? map_header.height() : 0;
         winHeight        = $(window).height();
-        scaling          = Math.min( ( miniMapWidth - 12 ) / bodyWidth, ( miniMapHeight - 24 ) / bodyHeight);
+        scaling          = Math.min(
+                             ( miniMapWidth - 12 ) / bodyWidth,
+                             ( miniMapHeight - 24 ) / bodyHeighti
+                           );
 
         miniMapWrapElt.css({
-          height: miniMapHeight
+          width:   miniMapWidth -1,
+          height:  miniMapHeight
         });
+
         miniMap.css({
           width:                       bodyWidth,
           right:                       ( miniMapWidth - scaling * bodyWidth ) / 2,
@@ -126,8 +144,10 @@
         resizing = false;
       });
 
+
       // Reposition current location marker on minimap when a window.scroll
       // event is detected.
+
       $(window).on( 'scroll.minimap', function() {
 
         if ( scrolling ) {
@@ -176,11 +196,10 @@
     });
 
     var utilities = {
-      vis: window.localStorage.getItem('miniMapActive'),
-
       toggle: function(showMap) {
         if (typeof showMap === 'undefined') {
-          showMap = !vis
+          var vis = window.localStorage.getItem('miniMapActive');
+          showMap = !( vis && vis !== 'false' )
         }
 
         if ( showMap ) {
@@ -202,7 +221,9 @@
       }
     };
 
-    return utilities
+    $.minimap = this;
+    $.extend( $.minimap, utilities );
+
   };
 
 }(jQuery));

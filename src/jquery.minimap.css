@@ -1,39 +1,26 @@
-
 .map_col {
-	width:160px;
-	overflow:hidden;
-	position: relative;
-	float:right;
-  height: 100%;
-	min-height: 100%;
-	min-height: calc( 100% - 45px ); // in browsers that can handle it, subtract top nav
-	cursor:pointer;
-  display: block;
+	display: none;
 }
 
-//@media only screen and (min-width: 1440px) {
-//    body.mini-map-active .map_col {
-//        display: block !important;
-//    }
-//}
+.mini-map-active .map_col {
+	width:       160px;
+	height:      100%;
+	min-height:  100%;
+	overflow:    hidden;
+	position:    relative;
+	float:       right;
+	cursor:      pointer;
+	display:     block;
+}
+
+@media only screen and (max-width: 800px) {
+	body.mini-map-active .map_col {
+		display: none !important;
+	}
+}
 
 .map-col-background {
-    background: rgba(0,0,0,.1);
-    padding: 0;
-    border-left: 1px solid rgba(0,0,0,.2);
+	background: rgba(0,0,0,.1);
+	padding: 0;
+	border-left: 1px solid rgba(0,0,0,.2);
 }
-.map-header {
-    box-sizing: border-box ;
-    background: rgba(0,0,0,.2);
-    height: 58px;
-    line-height: 42px;
-    padding-top: 16px;
-    font-size: 14px;
-    vertical-align: middle;
-    position: fixed;
-    width: 160px;
-    padding-right: 12px;
-    text-indent: 6px;
-    z-index: 10;
-}
-
