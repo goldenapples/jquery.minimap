@@ -76,8 +76,10 @@
           right:                       ( miniMapWidth - scaling * bodyWidth ) / 2,
           opacity:                     '1',
           'transform':                 'scale('+scaling+')',
-          'transform-origin':          'top right',
+          '-ms-transform':             'scale('+scaling+')',
           '-webkit-transform':         'scale('+scaling+')',
+          'transform-origin':          'top right',
+          '-ms-transform-origin':      'top right',
           '-webkit-transform-origin':  'top right'
         });
 
@@ -135,8 +137,10 @@
           width:                       bodyWidth,
           right:                       ( miniMapWidth - scaling * bodyWidth ) / 2,
           'transform':                 'scale('+scaling+')',
-          'transform-origin':          'top right',
+          '-ms-transform':             'scale('+scaling+')',
           '-webkit-transform':         'scale('+scaling+')',
+          'transform-origin':          'top right',
+          '-ms-transform-origin':      'top right',
           '-webkit-transform-origin':  'top right'
         });
 
