@@ -12,6 +12,13 @@ body {
   height: 100%;
 }
 
+.utility {
+	font-family: Helvetica, "Liberation Sans", Arial, sans-serif;
+	position: absolute;
+	top: .5em;
+	left: .5em;
+}
+
 h1 {
   font-family: "Diplomata", cursive;
   color: #999;

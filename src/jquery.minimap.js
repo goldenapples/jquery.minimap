@@ -123,7 +123,7 @@
         winHeight        = $(window).height();
         scaling          = Math.min(
                              ( miniMapWidth - 12 ) / bodyWidth,
-                             ( miniMapHeight - 24 ) / bodyHeighti
+                             ( miniMapHeight - 24 ) / bodyHeight
                            );
 
         miniMapWrapElt.css({
