@@ -12,6 +12,9 @@ module.exports = function(grunt) {
         dest: '<%= pkg.name %>.min.js'
       }
     },
+    'gh-pages': {
+      src: ['index.html','demo/*','src/*']
+    },
     watch: {
       scripts: {
         files: ['src/*'],
@@ -22,6 +25,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-gh-pages');
 
   grunt.registerTask('default', ['uglify']);
 
