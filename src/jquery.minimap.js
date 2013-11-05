@@ -15,13 +15,16 @@
       toggle_btn:  '',
       draggable:   (typeof $.fn.draggable !== 'undefined'),
       scrollto:    (typeof $.fn.scrollTo !== 'undefined'),
-      map_header:  ''
+      map_header:  '',
+      overlay_background_color: ''
     }, settings);
 
     var body_col = (settings.body_col) ?
           $(settings.body_col) : $(this),
         map_col  = (settings.map_col) ?
-          $(settings.map_col) : $( '<aside class="map_col"></aside>' );
+          $(settings.map_col) : $( '<aside class="map_col"></aside>' ),
+        overlay_background_color = (settings.overlay_background_color) ?
+          settings.overlay_background_color : 'rgba(26, 45, 58, .1)';
 
     var map_header = $(settings.map_header).appendTo( map_col );
 
@@ -99,7 +102,7 @@
 
       mapWaypoint = $('<div class="miniMapOverlay ui-draggable"></div>')
         .css({
-          background:  'rgba(26, 45, 58, .1)',
+          background:  overlay_background_color,
           width:       '100%',
           position:    'absolute'
         })
