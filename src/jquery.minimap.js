@@ -16,6 +16,8 @@
       draggable:   (typeof $.fn.draggable !== 'undefined'),
       scrollto:    (typeof $.fn.scrollTo !== 'undefined'),
       map_header:  '',
+      minimap_opacity: '',
+      minimap_left_border: '',
       overlay_background_color: ''
     }, settings);
 
@@ -23,6 +25,10 @@
           $(settings.body_col) : $(this),
         map_col  = (settings.map_col) ?
           $(settings.map_col) : $( '<aside class="map_col"></aside>' ),
+        minimap_opacity = (settings.minimap_opacity) ?
+          settings.minimap_opacity : 1,
+        minimap_left_border = (settings.minimap_left_border) ?
+          settings.minimap_left_border : 'none',
         overlay_background_color = (settings.overlay_background_color) ?
           settings.overlay_background_color : 'rgba(26, 45, 58, .1)';
 
@@ -64,7 +70,8 @@
           width:     miniMapWidth -1,
           height:    miniMapHeight,
           top:       miniMapOffsetTop,
-          overflow:  'hidden'
+          overflow:  'hidden',
+          borderLeft: minimap_left_border
         })
         .appendTo(miniMapHolder);
 
@@ -77,7 +84,7 @@
           position:                    'absolute',
           top:                         '6px',
           right:                       ( miniMapWidth - scaling * bodyWidth ) / 2,
-          opacity:                     '1',
+          opacity:                     minimap_opacity,
           'transform':                 'scale('+scaling+')',
           '-ms-transform':             'scale('+scaling+')',
           '-webkit-transform':         'scale('+scaling+')',
