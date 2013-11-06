@@ -49,7 +49,6 @@
 
       if ( miniMapSetup ) return;
 
-      console.log( map_col );
       var miniMapHolder    = map_col,
           miniMapHeight    = miniMapHolder.outerHeight(),
           miniMapOffsetTop = (map_header) ? map_header.outerHeight() : 0,
