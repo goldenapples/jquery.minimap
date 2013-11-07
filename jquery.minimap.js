@@ -1,3 +1,12 @@
+/*
+ * jQuery.minimap - http://github.com/goldenapples/jquery-minimap
+ * Version: 0.1.0; built 2013-11-07
+ * Requires: jQuery
+ *
+ * Released under the MIT license.
+ * http://github.com/goldenapples/jquery-minimap/blob/master/LICENSE.txt
+ */
+
 (function($) {
   $.fn.minimap = function(settings) {
     var settings = $.extend({
@@ -49,7 +58,7 @@
           bodyWidth        = $('.body_col').width() - miniMapWidth,
           scaling          = Math.min(
                                ( miniMapWidth - 12 ) / bodyWidth,
-                               ( miniMapHeight - 24 ) / bodyHeight
+                               ( miniMapHeight - 24) / bodyHeight
                              ),
           mapWaypoint;
 
