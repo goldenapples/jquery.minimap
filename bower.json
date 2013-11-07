@@ -1,0 +1,28 @@
+{
+  "name": "jquery.minimap",
+  "version": "0.1.0",
+  "description": "A jQuery plugin that provides a Sublime Text style \"minimap\" for navigating long text pages.",
+  "main": "jquery.minimap.min.js",
+  "authors": [
+    "Nathaniel Taintor <goldenapplesdesign@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/goldenapples/jquery-minimap"
+  },
+  "keywords": [
+    "navigation",
+    "minimap",
+    "scrollbar",
+    "waypoints"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/goldenapples/jquery.minimap",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
