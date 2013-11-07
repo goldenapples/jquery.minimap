@@ -3,3 +3,4 @@ node_modules
 .project
 .grunt
 *.sw[nop]
+npm-debug.log
