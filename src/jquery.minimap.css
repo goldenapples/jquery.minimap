@@ -3,7 +3,7 @@
 }
 
 .mini-map-active .map_col {
-	/* width:       160px; */
+	width:       160px;
 	height:      100%;
 	min-height:  100%;
 	overflow:    hidden;
