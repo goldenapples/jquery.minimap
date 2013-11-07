@@ -38,7 +38,10 @@ Options can be passed to the plugin to override a number of defaults.
 | `toggle_btn`   | An element to use to toggle visibility of the minimap   | None                                                                                                     |
 | `draggable`    | Whether to use jQuery.ui.draggable controls             | True if jQuery.ui is loaded, false otherwise                                                             |
 | `scrollto`     | Whether to use jQuery.scrollTo to animate scrolling     | True if jQuery.scrollTo is loaded, false otherwise.                                                      |
-| `map_header`   | Custom content to put in a "header" of the map column   |                                                                                                          |
+| `map_header`   | Custom content to put in a "header" of the map column   |                                                                                                          | 
+| `minimap_opacity` | Opacity of the minimap vis-à-vis the underlying page (between 0 and 1) | 1
+| `minimap_left_border` | Specifies the CSS for the border between the minimap and the page body (e.g. `1px solid black`)| `none` |
+| `overlay_background_color` | The background color of the minimap | `rgba(26, 45, 58, .1)`|
 
 ### Utility functions:
 

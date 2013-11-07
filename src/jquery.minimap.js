@@ -58,7 +58,7 @@
           bodyWidth        = $('.body_col').width() - miniMapWidth,
           scaling          = Math.min(
                                ( miniMapWidth - 12 ) / bodyWidth,
-                               ( miniMapHeight - 24) / bodyHeight
+                               ( miniMapHeight - 24 ) / bodyHeight
                              ),
           mapWaypoint;
 
