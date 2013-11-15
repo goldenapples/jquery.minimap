@@ -84,6 +84,22 @@
         });
 
       miniMap.find('script').remove();
+
+      miniMap.find('*').each(
+        function(i, elt) {
+          if ( $(elt).children().length )
+            return;
+          var text = $(elt).text();
+          $(elt).html(
+            text.replace(
+              /[a-zA-z]/g,
+              function(match) {
+                return '&#' + match.charCodeAt(0) + ';';  }
+            )
+          );
+        }
+      );
+
       miniMap.appendTo( miniMapWrapElt );
 
       miniMapOverlay = $('<div></div>')
